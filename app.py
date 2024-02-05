@@ -4,13 +4,13 @@ import os
 from langchain_community.llms import openai
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SimpleSequentialChain, SequentialChain
-from langchain_openai import ChatOpenAI  
+from langchain_openai import ChatOpenAI
 import streamlit as st
 
 st.title("Youtube Title Generator App")
 prompt = st.text_input("Write your keyword here")
 
-OPEN_AI_KEY = os.getenv('OPENAI_API_KEY')
+os.environ['OPENAI_API_KEY'] = input("Enter your api key:")
 llm = ChatOpenAI(temperature=1.0, model_name="gpt-3.5-turbo")
 
 title_template = PromptTemplate(
