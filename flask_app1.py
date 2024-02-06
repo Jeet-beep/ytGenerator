@@ -2,13 +2,14 @@ from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 import os
 import gunicorn
+from flask_cors import CORS
 from langchain_community.llms import openai
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SimpleSequentialChain, SequentialChain
 from langchain_openai import ChatOpenAI
 
 app = Flask(__name__)
-
+CORS(app)
 load_dotenv()
 
 OPEN_AI_KEY = os.getenv('OPENAI_API_KEY')
